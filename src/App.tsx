@@ -1,28 +1,43 @@
-import { FormEvent, useEffect, useState, ChangeEvent } from "react";
+import { FormEvent, useEffect, useState, useRef,ChangeEvent } from "react";
 import { getCountries, getCountryByName } from "./services/country";
 import { Country, Region } from "./types/country";
 import styles from "./App.module.css";
+import {ListOfCountrys} from "./components/Countrys"
+import {useSearch} from "./hooks/useSearch"
 
 const regions = Object.values(Region);
 
 function App() {
   const [country, setCountry] = useState<Country[]>([]);
-  const [search, setSearch] = useState("");
+  
+  // Custom hook
+  const {search, setSearch, error} = useSearch()
 
   useEffect(() => {
     getCountries().then((allCountry) => setCountry(allCountry));
   }, []);
-
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = await getCountryByName(search);
-    setCountry(data);
+
+    // Para evitar hacer fetch si el campo es vacío
+    try {
+      if (search === '') return
+
+      const data = await getCountryByName(search);
+      console.log(data);
+      setCountry(data);
+      
+    } catch (error) {
+      throw new Error('Error seaching country')
+      
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
-
+  
   return (
     <>
       <header>
@@ -41,22 +56,10 @@ function App() {
         </select>
       </form>
 
+      {error && <p>{error}</p>}
+
       <main className={styles.cards}>
-        {country.map((item) => (
-          <section key={item.name.common}>
-            <header>
-              <img src={item.flags.png} alt={item.name.common} />
-            </header>
-            <main>
-              <h2>{item.name.common}</h2>
-              <article>
-                <p>Population: {item.population}</p>
-                <p>Region: {item.region}</p>
-                <p>Capital: {item.capital}</p>
-              </article>
-            </main>
-          </section>
-        ))}
+        <ListOfCountrys country={country}/>
       </main>
     </>
   );

@@ -11,6 +11,7 @@ export const getCountries = async () => {
 };
 
 export const getCountryByName = async (countryName: string) => {
+
   const { data } = await countryInstance.get<Country[]>(`name/${countryName}`);
   return data;
 };
