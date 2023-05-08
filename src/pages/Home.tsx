@@ -4,24 +4,21 @@ import { Country, Region } from "@/types/country";
 import styles from "./Home.module.css";
 import { ListOfCountrys } from "@/components/Countrys";
 import { useSearch } from "@/hooks/useSearch";
+import { useCountryStore } from "@/store/useCountry";
 
 const regions = Object.values(Region);
 
 export const Home = () => {
-  const [country, setCountry] = useState<Country[]>([]);
-  const { search, setSearch, error } = useSearch();
-
-  useEffect(() => {
-    getCountries().then((allCountry) => setCountry(allCountry));
-  }, []);
+  const { search, setSearch } = useSearch();
+  const countrySearched = useCountryStore((store) => store.countrySearched);
+  const getCountryByName = useCountryStore((store) => store.getCountryByName);
+  const setCountries = useCountryStore((store) => store.setCountries);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (search === "") return;
-      const data = await getCountryByName(search);
-      console.log(data);
-      setCountry(data);
+      getCountryByName(search);
     } catch (error) {
       throw new Error("Error seaching country");
     }
@@ -45,8 +42,8 @@ export const Home = () => {
       </form>
 
       <div className={styles.cards}>
-        {error && <p>{error}</p>}
-        <ListOfCountrys country={country} />
+        <button onClick={setCountries}>Volver a Countries</button>
+        <ListOfCountrys countries={countrySearched} /> {/* [{..peru}] */}
       </div>
     </>
   );

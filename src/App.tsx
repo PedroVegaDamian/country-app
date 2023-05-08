@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route } from "wouter";
 import { Home } from "@/pages/Home";
 import { CountryDetails } from "@/pages/CountryDetails";
@@ -5,6 +6,11 @@ import { useCountryStore } from "@/store/useCountry";
 
 function App() {
   const counter = useCountryStore((state) => state.counter);
+  const getAllCountries = useCountryStore((state) => state.getAllCountries);
+
+  useEffect(() => {
+    getAllCountries();
+  }, [getAllCountries]);
 
   return (
     <>
