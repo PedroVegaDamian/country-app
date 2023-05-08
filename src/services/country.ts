@@ -1,10 +1,20 @@
-import type { Country } from "../types/country";
-import { countryInstance } from "../config/axiosConfig";
+import { Country } from "@/types/country";
+import { countryInstance } from "@/config/axiosConfig";
+
+const namefields: (keyof Country)[] = [
+  "name",
+  "flags",
+  "population",
+  "capital",
+  "region",
+  "ccn3",
+];
+const fields: string = [...new Set(namefields)].join(",");
 
 export const getCountries = async () => {
   const { data } = await countryInstance.get<Country[]>("all", {
     params: {
-      fields: "name,flags,population,capital,region",
+      fields,
     },
   });
   return data;
