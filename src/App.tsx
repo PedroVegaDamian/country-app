@@ -3,6 +3,7 @@ import { Route } from "wouter";
 import { Home } from "@/pages/Home";
 import { CountryDetails } from "@/pages/CountryDetails";
 import { useCountryStore } from "@/store/useCountry";
+import Button from "@mui/material/Button";
 
 function App() {
   const counter = useCountryStore((state) => state.counter);
@@ -17,6 +18,7 @@ function App() {
       <header>
         <section>Logo</section>
         <section>Dark mode</section>
+        <Button variant="contained">Contained</Button>
       </header>
 
       <h1>Counter: {counter}</h1>

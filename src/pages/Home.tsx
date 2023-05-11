@@ -1,6 +1,5 @@
-import { FormEvent, useEffect, useState, ChangeEvent } from "react";
-import { getCountries, getCountryByName } from "@/services/country";
-import { Country, Region } from "@/types/country";
+import { FormEvent, ChangeEvent } from "react";
+import { Region } from "@/types/country";
 import styles from "./Home.module.css";
 import { ListOfCountrys } from "@/components/Countrys";
 import { useSearch } from "@/hooks/useSearch";

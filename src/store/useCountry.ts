@@ -9,12 +9,16 @@ interface CountryStore {
   setCountries: () => void;
   getAllCountries: () => void;
   getCountryByName: (name: string) => void;
+  getCountryByCode: (code: string | undefined) => Country[];
 }
 
 export const useCountryStore = create<CountryStore>()((set, get) => ({
   countries: [],
   countrySearched: [],
   counter: 10,
+  getCountryByCode: (code: string | undefined) => {
+    return get().countries.filter((country) => country.cca3 === code);
+  },
   setCountries: () => {
     set(() => ({
       countrySearched: get().countries,
