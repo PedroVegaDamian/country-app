@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const CountrySearch = ({ countries }: Props) => {
-  
   return (
     <>
       {countries.map((country) => (

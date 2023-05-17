@@ -8,6 +8,11 @@ const namefields: (keyof Country)[] = [
   "capital",
   "region",
   "cca3",
+  "subregion",
+  "tld",
+  "currencies",
+  "languages",
+  "borders",
 ];
 const fields: string = [...new Set(namefields)].join(",");
 
