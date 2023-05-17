@@ -6,7 +6,8 @@ interface Props {
   countries: Country[];
 }
 
-export const ListOfCountrys = ({ countries }: Props) => {
+export const CountrySearch = ({ countries }: Props) => {
+  
   return (
     <>
       {countries.map((country) => (
