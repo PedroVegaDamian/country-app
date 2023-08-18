@@ -1,5 +1,9 @@
-.cards {
-  gap: 1rem;
+.home__container {
+  padding: 3rem 2rem;
+}
+
+.home__cards {
+  gap: 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }

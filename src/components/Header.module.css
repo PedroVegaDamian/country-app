@@ -1,0 +1,28 @@
+.header {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding-inline: 2rem;
+  justify-content: space-between;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header__title {
+  font-size: 1.5rem;
+}
+
+.header__darkModeButton {
+  gap: 0.5rem;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+.header__darkModeLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2px;
+}

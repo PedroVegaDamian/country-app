@@ -11,17 +11,30 @@ export const CountrySearch = ({ countries }: Props) => {
     <>
       {countries.map((country) => (
         <Link href={`/country/${country.cca3}`} key={country.cca3}>
-          <a>
-            <section className={styles.card}>
-              <header>
-                <img src={country.flags.png} alt={country.name.common} />
+          <a className={styles.card}>
+            <section>
+              <header className={styles.card__sectionHeader}>
+                <img
+                  className={styles.card__sectionFlag}
+                  src={country.flags.png}
+                  alt={country.name.common}
+                />
               </header>
-              <div>
-                <h2>{country.name.common}</h2>
-                <article>
-                  <p>Population: {country.population}</p>
-                  <p>Region: {country.region}</p>
-                  <p>Capital: {country.capital}</p>
+              <div className={styles.card__sectionInfo}>
+                <h2 className={styles.card__sectionName}>
+                  {country.name.common}
+                </h2>
+                <article className={styles.card__sectionData}>
+                  <p>
+                    <span>Population:</span>{" "}
+                    {country.population.toLocaleString("en-US")}
+                  </p>
+                  <p>
+                    <span>Region:</span> {country.region}
+                  </p>
+                  <p>
+                    <span>Capital:</span> {country.capital?.[0]}
+                  </p>
                 </article>
               </div>
             </section>

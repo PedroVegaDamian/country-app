@@ -3,6 +3,9 @@ import { useSearch } from "@/hooks/useSearch";
 import { useCountryStore } from "@/store/useCountry";
 import { FormEvent, ChangeEvent } from "react";
 
+import styles from "./Form.module.css";
+import { IconSearch } from "./icons/IconSearch";
+
 export const Form = () => {
   const { search, setSearch } = useSearch();
   const getCountryByName = useCountryStore((store) => store.getCountryByName);
@@ -34,9 +37,19 @@ export const Form = () => {
     getCountrysByContinent(region);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChangeInputSearch} value={search} />
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.form__search}>
+        <IconSearch />
+        <input
+          type="text"
+          className={styles.form__searchInput}
+          onChange={handleChangeInputSearch}
+          value={search}
+          placeholder="Search for a country.."
+        />
+      </div>
       <select
+        className={styles.form__select}
         name="Filter by Region"
         onChange={handleChangeInputSelect}
         value={selectRegion}

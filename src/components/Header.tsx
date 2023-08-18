@@ -1,12 +1,14 @@
+import styles from "./Header.module.css";
+import { IconMoon } from "./icons/IconMoon";
+
 export const Header = () => {
-  
   return (
-    <header>
-        <section>Where in the world?</section>
-        <section>
-          <div>Moom</div>
-          <div>Dark mode</div>
-        </section>
+    <header className={styles.header}>
+      <h1 className={styles.header__title}>Where in the world?</h1>
+      <button className={styles.header__darkModeButton}>
+        <IconMoon />
+        <span className={styles.header__darkModeLabel}>Dark Mode</span>
+      </button>
     </header>
-  )
-}
+  );
+};
