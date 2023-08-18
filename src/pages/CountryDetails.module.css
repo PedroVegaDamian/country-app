@@ -1,0 +1,45 @@
+.countryDetails {
+  margin: 3rem 2rem;
+
+}
+
+.countryDetails__backButton {
+  gap: 0.5rem;
+  width: 124px;
+  height: 36px;
+  border: none;
+  outline: none;
+  display: flex;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+  align-items: center;
+  font-family: inherit;
+  justify-content: center;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.countryDetails__info {
+  gap: 8rem;
+  display: flex;
+}
+
+.countryDetails__info__name {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.countryDetails__info__container {
+  display: flex;
+  gap: 6rem;
+}
+
+.countryDetails__info__container p {
+  margin-bottom: 0.5rem;
+}
+
+.countryDetails__info__borderCountries {
+  margin-top: 4rem;
+}

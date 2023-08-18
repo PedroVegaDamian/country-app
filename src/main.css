@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'system-ui', sans-serif;
+}
+
 img {
   max-width: 100%;
 }

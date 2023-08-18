@@ -7,12 +7,12 @@ export const Home = () => {
   const countrySearched = useCountryStore((store) => store.countrySearched);
 
   return (
-    <>
+    <div className={styles.home__container}>
       <Form />
-      
-      <div className={styles.cards}>
-        <CountrySearch countries={countrySearched} /> {/* [{..peru}] */}
+
+      <div className={styles.home__cards}>
+        <CountrySearch countries={countrySearched} />
       </div>
-    </>
+    </div>
   );
 };
