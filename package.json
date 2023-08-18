@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "engines": {
-    "node": "v16.15.1",
+    "node": "18.x",
     "yarn": "please-use-npm"
   },
   "dependencies": {
